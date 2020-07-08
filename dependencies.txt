@@ -1,2 +1,56 @@
 Java SDK >= 10.0.0
 Git >= 2.15.0
+Spark = 2.4.6
+Hadoop = 2.7
+
+
+
+=====================================================
+
+Fixin hadoop runtime error issue in Windows:
+Download winutils.exe for hadoop = 2.7
+https://github.com/cdarlint/winutils
+create folder C:\hadoop\bin\ and copy it there.
+
+=====================================================
+
+Adding Env Variables:
+Hadoop:
+1- Go to Advanced System Settings, and click on Environment Variables.
+2- User varibalews, click on new and give
+    a- variable name=HADOOP_HOME
+    b- variable value = C:\hadoop
+
+Spark:
+1- Variable = SPARK_HOME
+2- Value = (wherever spark is located) C:\Spark\spark-2.4.6-bin-hadoop2.7
+
+Now lets add hadoop binary and spark binaries to the path variable:
+1- Click on the PATH variable and click edit
+2- Click on new and:
+    a- %HADOOP_HOME%\bin
+    b- %SPARK_HOME%\bin
+
+=====================================================
+
+Hadoop needs the below folders to run correctly
+
+1- Before running spark we have to create a folder tmp under the local disk
+(C:\tmp)
+
+2- Under tmp create new folder hive
+(C:\tmp\hive)
+
+=====================================================
+
+For Java, the variable name is JAVA_HOME and for the value use the path to your
+Java JDK directory (in our case it’s C:\Program Files\Java\jdk-14.0.1).
+
+=====================================================
+
+Now open the terminal:
+
+1- winutils chmod 777 c:\tmp\hive (this will set the appropriate permissions for hadoop to use this folder)
+2- run pyspark or spark-shell
+
+voila!
