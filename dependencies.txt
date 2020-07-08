@@ -2,6 +2,7 @@ Java SDK 8 (doesnt work with higher versions)
 Git >= 2.15.0
 Spark = 2.4.6
 Hadoop = 2.7
+psutil
 
 Setup steps for Spark:
 https://phoenixnap.com/kb/install-spark-on-windows-10

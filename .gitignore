@@ -2,7 +2,7 @@
 *.iml
 *.ipr
 *.iws
-out/
+*/out/
 build/
 
 # Byte-compiled / optimized / DLL files
