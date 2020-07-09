@@ -16,14 +16,14 @@ if __name__ == "__main__":
     housePriceTotal = housePricePairRdd \
         .reduceByKey(lambda x, y: AvgCount(x.count + y.count, x.total + y.total))
 
-    print("housePriceTotal: ")
-    for bedroom, avgCount in housePriceTotal.collect():
-        print("{} : ({}, {})".format(bedroom, avgCount.count, avgCount.total))
-
-    housePriceAvg = housePriceTotal.mapValues(lambda avgCount: avgCount.total / avgCount.count)
-    print("\nhousePriceAvg: ")
-    for bedroom, avg in housePriceAvg.collect():
-        print("{} : {}".format(bedroom, avg))
+    # print("housePriceTotal: ")
+    # for bedroom, avgCount in housePriceTotal.collect():
+    #     print("{} : ({}, {})".format(bedroom, avgCount.count, avgCount.total))
+    #
+    # housePriceAvg = housePriceTotal.mapValues(lambda avgCount: avgCount.total / avgCount.count)
+    # print("\nhousePriceAvg: ")
+    # for bedroom, avg in housePriceAvg.collect():
+    #     print("{} : {}".format(bedroom, avg))
 
 
     # Just for testing

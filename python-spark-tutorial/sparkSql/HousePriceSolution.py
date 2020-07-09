@@ -11,7 +11,10 @@ if __name__ == "__main__":
         .option("inferSchema", value=True) \
         .csv("in/RealEstate.csv")
 
-    realEstate.groupBy("Location") \
+    realEstate \
+        .groupBy("Location") \
         .avg(PRICE_SQ_FT) \
         .orderBy("avg(Price SQ FT)") \
         .show()
+
+    session.stop()

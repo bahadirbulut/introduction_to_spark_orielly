@@ -43,7 +43,7 @@ if __name__ == "__main__":
         filtered = wordRdd.filter(lambda line: line[0] != "MLS")
         data = filtered.map(lambda line: (line[3], (1, line[2])))
 
-        result = data.reduce(lambda x, y: (x, ))
+        result = data.reduce(lambda x, y: (x, y))
 
         for k, v in result:
             print(k, v)

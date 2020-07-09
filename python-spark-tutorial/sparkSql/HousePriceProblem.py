@@ -1,5 +1,9 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import avg, round
+
+PRICE_SQ_FT = "Price SQ Ft"
+
 if __name__ == "__main__":
-    
     '''    
     Create a Spark program to read the house data from in/RealEstate.csv,
     group by location, aggregate the average price per SQ Ft and sort by average price per SQ Ft.
@@ -37,3 +41,20 @@ if __name__ == "__main__":
     |................|.................|
     '''
 
+    session = SparkSession.builder.appName("HousePriceSolution").master("local[*]").getOrCreate()
+
+    realEstate = session.read \
+        .option("header", "true") \
+        .option("inferSchema", value=True) \
+        .csv("in/RealEstate.csv")
+
+    responseWithSelectedColumns = realEstate.select("Location", PRICE_SQ_FT)
+
+    responseWithSelectedColumns \
+        .groupBy("Location") \
+        .avg(PRICE_SQ_FT) \
+        .orderBy("avg(Price SQ FT)", ascending=False) \
+        .select("Location", round("avg(Price SQ FT)", 2)) \
+        .show()
+
+    session.stop()

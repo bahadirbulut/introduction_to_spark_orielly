@@ -16,5 +16,12 @@ if __name__ == "__main__":
 
     airportsByCountry = countryAndAirportNameAndPair.groupByKey()
 
+    count = 1
     for country, airportName in airportsByCountry.collectAsMap().items():
-        print("{}: {}".format(country, list(airportName)))
+        print("\n{}: {}".format(country, list(airportName)))
+        count += 1
+        print("")
+        print("------------------------------------------")
+        print("")
+        if count > 2:
+            break
