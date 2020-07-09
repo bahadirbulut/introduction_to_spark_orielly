@@ -1,4 +1,4 @@
-from pyspark import SparkContext
+from pyspark import SparkContext, SparkConf
 
 if __name__ == "__main__":
 
@@ -33,3 +33,22 @@ if __name__ == "__main__":
     3, 1 and 2 mean the number of bedrooms. 325000 means the average price of houses with 3 bedrooms is 325000.
 
     '''
+
+    if __name__ == "__main__":
+        conf = SparkConf().setAppName("avghouseprice").setMaster("local")
+        sc = SparkContext(conf=conf)
+
+        lines = sc.textFile("in/RealEstate.csv")
+        wordRdd = lines.map(lambda line: line.split(","))
+        filtered = wordRdd.filter(lambda line: line[0] != "MLS")
+        data = filtered.map(lambda line: (line[3], (1, line[2])))
+
+        result = data.reduce(lambda x, y: (x, ))
+
+        for k, v in result:
+            print(k, v)
+
+
+        # result = data.reduce(lambda x, y: (x, y))
+
+        # data.coalesce(1).saveAsTextFile("out/test")

@@ -9,7 +9,7 @@ https://phoenixnap.com/kb/install-spark-on-windows-10
 
 =====================================================
 
-Fixin hadoop runtime error issue in Windows:
+Fixing hadoop runtime error issue in Windows:
 Download winutils.exe for hadoop = 2.7
 https://github.com/cdarlint/winutils
 create folder C:\hadoop\bin\ and copy it there.
@@ -50,7 +50,7 @@ Java JDK directory (in our case it’s C:\Program Files\Java\jdk1.8.0_251).
 
 =====================================================
 
-Now open the terminal:
+Now open the terminal (for windows powershell with admin privileges):
 
 1- winutils chmod 777 c:\tmp\hive (this will set the appropriate permissions for hadoop to use this folder)
 2- run pyspark or spark-shell

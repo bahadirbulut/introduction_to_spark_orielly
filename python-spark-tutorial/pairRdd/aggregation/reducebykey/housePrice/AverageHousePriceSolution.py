@@ -24,3 +24,7 @@ if __name__ == "__main__":
     print("\nhousePriceAvg: ")
     for bedroom, avg in housePriceAvg.collect():
         print("{} : {}".format(bedroom, avg))
+
+
+    # Just for testing
+    housePricePairRdd.coalesce(1).saveAsTextFile("out/test")

@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     airportPairRDD = airportsRDD.map(lambda line: \
         (Utils.COMMA_DELIMITER.split(line)[1], \
-      Utils.COMMA_DELIMITER.split(line)[3]))
+        Utils.COMMA_DELIMITER.split(line)[3]))
 
     upperCase = airportPairRDD.mapValues(lambda countryName: countryName.upper())
 

@@ -7,5 +7,7 @@ if __name__ == "__main__":
     inputIntegers = [1, 2, 3, 4, 5]
     integerRdd = sc.parallelize(inputIntegers)
    
-    product = integerRdd.reduce(lambda x, y: x * y)
+    # product = integerRdd.reduce(lambda x, y: x * y)
+    product = integerRdd.reduce(lambda x, y: (x, y))
     print("product is :{}".format(product))
+
